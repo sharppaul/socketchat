@@ -46,7 +46,7 @@ const wsServer = new webSocketServer({
 // This callback function is called every time someone
 // tries to connect to the WebSocket server
 wsServer.on('request', function (request) {
-    console.log((new Date()) + ' Connection from origin ' + request.origin + '.');
+    console.log((new Date()) + ' Connection from origin \t' + request.origin + ' - ' + request.remoteAddress);
 
     //INSECURE
     const connection = request.accept(null, request.origin);
@@ -57,8 +57,6 @@ wsServer.on('request', function (request) {
 
 
     let userName = false;
-
-    console.log((new Date()) + ' Connection accepted.');
 
     // send back chat history
     if (history.length > 0) {
